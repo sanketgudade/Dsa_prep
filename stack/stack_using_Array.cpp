@@ -1,53 +1,72 @@
 #include<iostream>
 using namespace std;
+#define MAX 10
 
-class stackImpl {
 
-    int top = -1;
-    int st[10];
+class stack_impl{
 
-public:   //  IMPORTANT
+    int arr[MAX];
+    int top;
 
-    void push(int x) {
-        if(top >= 9) {
-            cout << "STACK FULL\n";
-            return;   //  stop
-        }
-        top++;
-        st[top] = x;
+
+
+public: 
+stack_impl(){
+top=-1;
+}
+
+bool isfull(){
+    return top==MAX-1;
+}
+
+
+bool isEmpty(){
+    return top==-1;
+    
+}
+
+
+void push(int x){
+    if(isfull()) {
+        cout<<"The stack is full cannot push the element!"<<endl;
     }
-
-    void pop() {
-        if(top == -1) {
-            cout << "STACK EMPTY\n";
-            return;   //  stop
-        }
-        top--;
+    else{
+        arr[++top]=x;
     }
+}
 
-    int topp() {
-        if(top == -1) return -1;
-        return st[top];
+
+void pop(){
+    if(isEmpty()){
+        cout<<"The stack is empty cannot pop!"<<endl;
     }
-
-    int size() {
-        return top + 1;   //  fixed
+    else{
+        arr[top--];
     }
-};
+}
 
-int main() {
+void peek(){
+    if(isEmpty()){
+        cout<<"The stack is empty no Top element to show!"<<endl;
+    }
+    else{
+        cout<<arr[top];
+    }
+}
 
-    stackImpl sst;   //  object created
+void display(){
+    while(!isEmpty()){
+        cout<<arr[top];
+    }
+}
 
-    sst.push(10);
-    sst.push(20);
 
-    cout << "Top: " << sst.topp() << endl;
-    cout << "Size: " << sst.size() << endl;
+};           // after class in cpp ; needed okkkkkkk!!!!!!
+  
 
-    sst.pop();
 
-    cout << "Top after pop: " << sst.topp() << endl;
+int main(){
+
 
     return 0;
 }
