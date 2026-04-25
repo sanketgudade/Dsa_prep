@@ -19,7 +19,7 @@ bool isfull(){
     return top==MAX-1;
 }
 
-
+// this is isempty logic
 bool isEmpty(){
     return top==-1;
     
@@ -56,7 +56,8 @@ void peek(){
 
 void display(){
     while(!isEmpty()){
-        cout<<arr[top];
+        cout<<arr[top]<<" ";
+        arr[top--];
     }
 }
 
@@ -66,6 +67,20 @@ void display(){
 
 
 int main(){
+
+    stack_impl st;
+    st.push(10);
+    st.push(20);
+
+    st.push(30);
+
+    st.push(40);
+
+    st.push(50);
+   
+    st.pop();
+
+    st.display();
 
 
     return 0;
